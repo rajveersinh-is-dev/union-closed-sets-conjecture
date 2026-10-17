@@ -24,8 +24,10 @@ for general n.
 
 from __future__ import annotations
 
-import sys
 from time import time
+import functools
+import sys
+
 
 
 def antichains(n: int):
@@ -37,7 +39,15 @@ def antichains(n: int):
     """
     subsets = list(range(1, 1 << n))
 
+    @functools.lru_cache(maxsize=None)
     def rec(i: int, chosen: list[int]):
+        """Rec.
+        
+        Args:
+            i:
+            chosen:
+        
+        """
         if i == len(subsets):
             yield tuple(chosen)
             return
@@ -92,6 +102,9 @@ def frequencies(family: list[int], n: int) -> list[int]:
 
 
 def main() -> None:
+    """Entry point — parse arguments and run the main computation.
+    
+    """
     n = int(sys.argv[1]) if len(sys.argv) > 1 else 5
     if n < 1 or n > 6:
         print("Use n in 1..6 (n=6 is ~7.8M antichains and slow).")
