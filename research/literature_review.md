@@ -17,7 +17,9 @@ Let $\mathcal F\subseteq\mathcal P([n])$ be finite and union-closed ($A,B\in\mat
 | Minimal counterexample must have $n\le 4m-1$ ($m=|\mathcal F|$) | Lo Faro | ESTABLISHED |
 | Known for families with a member-set of size $\le 2$ | literature | ESTABLISHED |
 
-Best general lower bound: $c\approx 0.382$ (Sawin). Gap to $1/2$ remains.
+Best general lower bound: $c\approx 0.3823455$ (Cambie 2025, arXiv:2212.12500v2, improving on $(3-\sqrt5)/2\approx0.381966$). Gap to $1/2$ remains.
+
+Important: the entropy approach (Gilmer 2022; Sawin; Liu 2023; Cambie 2025) is provably sharp at $c\approx0.3823455$ — Cambie Section 2.3 exhibits a distribution showing no strict improvement is possible with the Sawin linear-combination idea. "Another core method will be needed for the full resolution" (Cambie 2025).
 
 ## Main techniques in the literature
 

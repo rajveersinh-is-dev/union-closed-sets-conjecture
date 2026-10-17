@@ -22,17 +22,25 @@ This is one of the best-known open problems in extremal set theory. Its statemen
 
 ## What was established here
 
-*(To be filled in as the research progresses. See `research/` and `mathematics/`.)*
+**Target:** Frankl's Union-Closed Sets Conjecture (1979) — **CONFIRMED OPEN** (best general bound $c\approx 0.3823455$; full conjecture unresolved).
 
 | Item | Status |
 |------|--------|
-| Problem statement formalized | in progress |
-| Literature review / known results | in progress |
-| Strongest proved result | none yet |
-| Computational verification | none yet |
+| Problem statement formalized | `mathematics/definitions.md` |
+| Literature review / known results | `research/literature_review.md` |
+| Strongest proved result | $M\ge m/(k+1)$ (Corollary), singleton case $\Rightarrow$ popular (Lemma 1) |
+| Computational verification | Exact enumeration for $n\le 5$ (`src/enumerate.py`) |
 | Formal (proof-assistant) verification | none |
 
-**No new theorem has been claimed.** Any result labelled `PROVED HERE` in this repository is accompanied by a complete, audited proof. Conjectures and computations are never presented as theorems.
+### Rigorous results (PROVED HERE)
+
+1. **Singleton case:** if $\{x\}\in\cF$ then $x$ is popular ($d(x)\ge m/2$).
+2. **Injection bound:** for every $S\in\cF$, $|\{A:S\subseteq A\}|\ge|\{A:A\cap S=\varnothing\}|$.
+3. **Degree bound:** $M=\max_x d(x)\ge m/(k+1)$ where $k$ is the smallest non-empty member-set size.
+
+**No theorem resolving Frankl's conjecture is claimed.** The full conjecture ($M\ge m/2$ for all union-closed families) remains open; the gap from $m/(k+1)$ (which is $<m/2$ whenever $k\ge2$) to $m/2$ is precisely the open difficulty. The entropy-based literature is provably sharp at $c\approx 0.3823455$ (Cambie 2025), so a new method is needed.
+
+Any result labelled `PROVED HERE` is accompanied by a complete proof in `mathematics/proofs.md`. Conjectures and computations are never presented as theorems.
 
 ---
 

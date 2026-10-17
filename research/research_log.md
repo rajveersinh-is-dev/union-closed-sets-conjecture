@@ -11,3 +11,22 @@
 - Surveyed open-problem sources: Douglas West's open problems list, Open Problem Garden, Ben Green's "100 Open Problems," Randomstrasse Open Problems 2024/2025, MathOverflow.
 - Rejected solved problems: L(2,1)-labeling (Havet–Reed–Sereni), prime-sum Hamiltonicity for large n (arXiv:2609.19114), Green problem 1 (Bedert 2025), Davenport constant formula (Wang 2026 disproof).
 - Selected Frankl's Union-Closed Sets Conjecture as confirmed-open target.
+
+## 2026-10-17 — Literature deep dive
+- Confirmed best general bound: c ~ 0.3823455 (Cambie 2025, arXiv:2212.12500v2).
+- Confirmed entropy approach is provably sharp at that constant (Cambie Sec 2.3); a new method is needed.
+- Derived Lemma 1 (singleton => popular) via explicit injection B -> B U {x}.
+- Derived Lemma 2 (injection bound g(S) >= h(S) for S in F) and Corollary M >= m/(k+1).
+- Wrote mathematics/proofs.md and mathematics/main_results.md.
+
+## 2026-10-17 — Computational exploration
+- src/enumerate.py: exact enumeration of union-closed families via antichain
+  (minimal-set) correspondence; verified Frankl for all non-trivial families
+  on n=4 (166 families) and n=5 (7579 families); tight example is
+  {emptyset,[n]} with every element frequency exactly 1/2.
+- n=6 enumeration too slow in pure Python (>10 min, 7.8M antichains); abandoned,
+  n=5 suffices as finite computation (literature verifies to n=12).
+- experiments/problem27.py: explored Ben Green Problem 27 (unique
+  representations in A+A over Z/pZ); computed g(p) small/erratic
+  (g(5)=4,g(7)=5,g(11)=5,g(13)=6,g(17)=6,g(19)=6); no clean bound found;
+  set aside as a secondary candidate.

@@ -1,0 +1,280 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage[urlcolor=blue,colorlinks=true]{hyperref}
+\usepackage{mathtools}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{observation}[theorem]{Observation}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\emp}{\varnothing}
+\newcommand{\Nhalf}{\tfrac{1}{2}}
+
+\title{Frankl's Union-Closed Sets Conjecture:\\
+Structural Bounds and Finite Verification}
+\author{Independent research project}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We study Frankl's union-closed sets conjecture (1979): every finite
+union-closed family of sets, other than $\{\varnothing\}$, contains an element
+belonging to at least half of its member-sets. The conjecture remains open;
+the best unconditional general lower bound is a constant
+$c\approx 0.3823455$ (Cambie 2025), and the entropy-based method leading to
+it is provably sharp at that constant, so a new idea is required to reach
+$1/2$.
+
+We present three elementary structural results, each with a complete proof:
+(1) if the family contains a singleton $\{x\}$, then $x$ is popular
+(density $\ge \Nhalf$); (2) an injection bound relating the subfamilies of
+sets containing a member-set $S$ and sets disjoint from $S$; and (3) a degree
+bound $M\ge m/(k+1)$ where $m$ is the number of member-sets and $k$ the size
+of a smallest non-empty member-set. We also give exact finite verification
+for all union-closed families on at most five ground elements and discuss the
+precise obstruction to the full conjecture.
+
+\textbf{Status:} the full conjecture is unresolved. No new theorem resolving
+Frankl's conjecture is claimed. The results herein are rigorous partial/
+structural results, clearly distinguished from the open conjecture.
+\end{abstract}
+
+\section{Introduction}
+
+A family $\cF$ of finite sets is \emph{union-closed} if
+$A,B\in\cF\Rightarrow A\cup B\in\cF$. In 1979, P.~Frankl conjectured that
+every finite union-closed family $\cF\neq\{\varnothing\}$ has an element
+contained in at least half of its member-sets:
+
+\begin{conjecture}[Frankl 1979]
+\label{conj:frankl}
+If $\cF\subseteq\cP([n])$ is union-closed and $\cF\neq\{\varnothing\}$, then
+there exists $x\in[n]$ such that
+$$\left|\{A\in\cF:x\in A\}\right|\ge \frac{|\cF|}{2}.$$
+\end{conjecture}
+
+An element satisfying the conclusion is called \emph{popular} (or
+\emph{abundant}). Despite its elementary statement, the conjecture has
+resisted proof for over forty years and is one of the best-known open problems
+in extremal set theory.
+
+\subsection*{Why the problem is hard}
+
+Write $d(x)=|\{A\in\cF:x\in A\}|$ and $m=|\cF|$. Since
+$\sum_x d(x)=\sum_{A\in\cF}|A|=m\bar s$ where $\bar s$ is the average
+member-set size, if $\bar s\ge n/2$ then the average density of an element is
+at least $\Nhalf$, so some element is popular. Thus a counterexample must have
+$\bar s<n/2$: its member-sets are on average small, yet some element must still
+appear in at least half the sets. This tension is the core difficulty.
+
+The strongest unconditional result is a constant lower bound
+$c\approx0.3823455$ (Cambie~\cite{cambie2025}, improving
+$(3-\sqrt5)/2\approx0.381966$ of Sawin~\cite{sawin2022}, itself building on
+Gilmer's first constant bound~\cite{gilmer2022}). Cambie shows the entropy
+method behind these bounds is \emph{provably sharp} at
+$c\approx0.3823455$: a matching extremal distribution defeats any strict
+improvement within that framework. Hence reaching $1/2$ requires a genuinely
+new method. The conjecture is verified for families on at most $12$ ground
+elements~\cite{zivkovic2024} and for several restricted classes, but the
+general case is open.
+
+\subsection*{Contribution}
+
+This paper records rigorous partial and structural results, each with a
+complete proof:
+
+\begin{enumerate}
+\item Lemma~\ref{lem:singleton}: if $\{x\}\in\cF$ then $x$ is popular
+  (density $\ge \Nhalf$).
+\item Lemma~\ref{lem:injection}: for every $S\in\cF$,
+  $|\{A:S\subseteq A\}|\ge|\{A:A\cap S=\emp\}|$, via an explicit injection.
+\item Corollary~\ref{cor:degree}: $M\ge m/(k+1)$ where $M=\max_x d(x)$ and
+  $k$ is the size of a smallest non-empty member-set.
+\end{enumerate}
+
+Together these show that any counterexample must have no singletons,
+$k\ge2$, $\bar s<n/2$, and $M<m/2$. The jump from $M\ge m/(k+1)$ (below
+$m/2$ whenever $k\ge2$) to the conjectured $M\ge m/2$ is precisely the open
+gap.
+
+We also report exact finite verification (computation as assistant, not proof)
+for all union-closed families on $n\le 5$ ground elements; the tight family
+is $\{\varnothing,[n]\}$, where every element has density exactly $\Nhalf$.
+
+No claim is made that Frankl's conjecture is resolved, and none of the
+results herein should be read as such. Whether Lemma~\ref{lem:singleton} or
+Lemma~\ref{lem:injection} are novel is left to the literature; they are
+presented as self-contained, verified proofs.
+
+\section{Preliminaries}
+
+\begin{definition}
+For a union-closed family $\cF\subseteq\cP([n])$ with $m=|\cF|$ and
+$x\in[n]$, define the \emph{frequency} (degree)
+$$d(x):=|\{A\in\cF:x\in A\}|,\qquad
+\widetilde d(x):=\frac{d(x)}{m}.$$
+An element is \emph{popular} if $\widetilde d(x)\ge\Nhalf$.
+For $S\subseteq[n]$ let
+$$g(S):=|\{A\in\cF:S\subseteq A\}|,\qquad
+h(S):=|\{A\in\cF:A\cap S=\emp\}|.$$
+\end{definition}
+
+\begin{observation}
+For each $x$, the subfamily $\cF_x=\{A\in\cF:x\in A\}$ is itself
+union-closed: if $A,B\in\cF_x$ then $A\cup B\in\cF$ and $x\in A\cup B$, so
+$A\cup B\in\cF_x$. Likewise $\cF_{\bar x}=\{A\in\cF:x\notin A\}$ is
+union-closed.
+\end{observation}
+
+\section{Structural results}
+
+\begin{lemma}[Singleton case]
+\label{lem:singleton}
+If $\{x\}\in\cF$ then $d(x)\ge m/2$.
+\end{lemma}
+
+\begin{proof}
+Define $\phi:\cF_{\bar x}\to\cF_x$ by $\phi(B)=B\cup\{x\}$.
+It is well-defined because $B,\{x\}\in\cF$ and $\cF$ is union-closed, so
+$B\cup\{x\}\in\cF$ and contains $x$. It is injective: if
+$B_1\cup\{x\}=B_2\cup\{x\}$ then, since $x\notin B_1,B_2$, we get $B_1=B_2$.
+Thus $|\cF_x|\ge|\cF_{\bar x}|$. As $\cF_x,\cF_{\bar x}$ partition $\cF$,
+$m=d(x)+(m-d(x))$, so
+$$d(x)\ge m-d(x)\iff 2d(x)\ge m\iff d(x)\ge\frac m2.$$
+\end{proof}
+
+\begin{lemma}[Injection bound]
+\label{lem:injection}
+For every $S\in\cF$, $g(S)\ge h(S)$.
+\end{lemma}
+
+\begin{proof}
+Define $\phi:\{B\in\cF:B\cap S=\emp\}\to\{A\in\cF:S\subseteq A\}$ by
+$\phi(B)=B\cup S$. Well-defined since $B,S\in\cF$ implies $B\cup S\in\cF$ and
+$S\subseteq B\cup S$. Injective: if $B_1\cup S=B_2\cup S$ then, because
+$B_1\cap S=B_2\cap S=\emp$, intersecting with $[n]\setminus S$ gives
+$B_1=B_2$. Hence $g(S)\ge h(S)$.
+\end{proof}
+
+\begin{corollary}[Degree bound via smallest member-set]
+\label{cor:degree}
+Let $k=\min\{|S|:\emp\ne S\in\cF\}$ and $M=\max_x d(x)$. Then
+$$M\ge \frac{m}{k+1}.$$
+\end{corollary}
+
+\begin{proof}
+Choose $S\in\cF$ with $|S|=k$.
+Every set containing $S$ contains some element of $S$, so
+$\{A:S\subseteq A\}\subseteq\bigcup_{x\in S}\{A:x\in A\}$ and
+$g(S)\le\sum_{x\in S}d(x)\le kM$; in particular $g(S)\le M$.
+The sets meeting $S$ have cardinality at most $\sum_{x\in S}d(x)\le kM$, so
+$$h(S)=m-\bigl|\{A:A\cap S\neq\emp\}\bigr|\ge m-kM.$$
+By Lemma~\ref{lem:injection}, $M\ge g(S)\ge h(S)\ge m-kM$, hence
+$(k+1)M\ge m$, i.e. $M\ge m/(k+1)$.
+\end{proof}
+
+\begin{corollary}
+Any counterexample to Conjecture~\ref{conj:frankl} must satisfy:
+\begin{enumerate}
+\item no singleton member-sets ($k\ge2$, by Lemma~\ref{lem:singleton});
+\item $\bar s<n/2$ (otherwise the average argument gives $M\ge m/2$);
+\item $M<m/2$ (by definition of counterexample).
+\end{enumerate}
+If the counterexample has a 2-element member-set then $M\ge m/3$.
+\end{corollary}
+
+\section{Finite computation}
+
+We verified Conjecture~\ref{conj:frankl} exactly for all non-trivial
+union-closed families on $n=4$ and $n=5$ ground elements.
+
+A union-closed family is determined by its inclusion-minimal non-empty
+member-sets, an antichain $\mathcal M$: the family is $\{\varnothing\}$
+together with all unions of subfamilies of $\mathcal M$. (Adding the empty
+set only lowers every element's density fraction $d(x)/m$, so it is the
+hardest case; families not containing $\varnothing$ are easier.) Enumerating
+antichains therefore enumerates every union-closed family containing
+$\varnothing$, and checking $2\max_x d(x)\ge m$ for each verifies the
+conjecture for that ground size.
+
+The computation uses exact integer arithmetic (bitmasks) and found no
+counterexample:
+\begin{center}
+\begin{tabular}{c|c}
+Ground set $n$ & Families checked \\ \hline
+$4$ & $166$ \\
+$5$ & $7\,579$
+\end{tabular}
+\end{center}
+In every case the minimum of $\max_x d(x)/m$ is exactly $\Nhalf$, attained by
+$\{\varnothing,[n]\}$, where each element has density exactly $\Nhalf$. This
+shows the constant $\Nhalf$ in the conjecture is best possible.
+
+This is computation as an \emph{assistant}: it verifies finite domains and
+builds intuition, but proves nothing for general $n$. (The literature verifies
+the conjecture up to $n=12$~\cite{zivkovic2024}.)
+
+\section{Discussion and open questions}
+
+The results above are partial/structural; the full conjecture remains open.
+The strongest general bound known is $c\approx0.3823455$, and the entropy
+method is sharp there, so new mathematics is needed to reach $\Nhalf$.
+
+\begin{enumerate}
+\item Can the bound $M\ge m/(k+1)$ be improved to $M\ge m/2$ for the case
+  $k=2$ (families with a 2-element member-set) by a short argument? This is
+  known in the literature but a self-contained proof would be worthwhile.
+\item Is there a new method, outside the entropy framework, that closes the
+  gap from $c\approx0.3823455$ to $\Nhalf$?
+\item Extend the finite verification beyond $n=12$ or find a structural
+  reduction that handles large $n$ from small cases.
+\end{enumerate}
+
+\section*{Acknowledgements and reproducibility}
+
+All source code, proofs, and the research log are in the accompanying GitHub
+repository (see README). Computations use only the Python standard library
+(exact integer arithmetic); no proprietary software is required.
+
+\begin{thebibliography}{9}
+\bibitem{gilmer2022}
+J.~Gilmer, ``A constant lower bound for Frankl's union-closed sets
+conjecture,'' 2022.
+
+\bibitem{sawin2022}
+S.~Sawin, ``An improved lower bound for the union-closed set conjecture,''
+arXiv:2212.12500, 2022.
+
+\bibitem{liu2023}
+J.~Liu, ``Improving the lower bound for the union-closed sets conjecture via
+conditionally IID coupling,'' arXiv:2306.08824, 2023.
+
+\bibitem{luraz2024}
+K.~Lu and A.~Raz, ``Note on the union-closed sets conjecture and Reimer's
+average set size theorem,'' arXiv:2405.10639, 2024.
+
+\bibitem{cambie2025}
+S.~Cambie, ``Better bounds for the union-closed sets conjecture using the
+entropy approach,'' arXiv:2212.12500v2, 2025.
+
+\bibitem{zivkovic2024}
+M.~Zivkovi\'c and~?, ``The union-closed sets conjecture holds for families on
+at most $12$ elements'' (finite verification).
+
+\bibitem{reimer2003}
+T.~Reimer, ``The average set size theorem,'' related to Reimer's theorem on
+union-closed families.
+\end{thebibliography}
+
+\end{document}
