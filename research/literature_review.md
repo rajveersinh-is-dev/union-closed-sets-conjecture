@@ -15,11 +15,21 @@ Let $\mathcal F\subseteq\mathcal P([n])$ be finite and union-closed ($A,B\in\mat
 | Connection to Reimer's average-set-size theorem | Lu–Raz (2024), arXiv:2405.10639 | ESTABLISHED |
 | Verified for $n\le 12$ ground elements | Zivković–Vučković | ESTABLISHED (computation + local configurations) |
 | Minimal counterexample must have $n\le 4m-1$ ($m=|\mathcal F|$) | Lo Faro | ESTABLISHED |
-| Known for families with a member-set of size $\le 2$ | literature | ESTABLISHED |
+| Conjecture for families with a member-set of size $\le 2$ | literature | ESTABLISHED |
 
 Best general lower bound: $c\approx 0.3823455$ (Cambie 2025, arXiv:2212.12500v2, improving on $(3-\sqrt5)/2\approx0.381966$). Gap to $1/2$ remains.
 
 Important: the entropy approach (Gilmer 2022; Sawin; Liu 2023; Cambie 2025) is provably sharp at $c\approx0.3823455$ — Cambie Section 2.3 exhibits a distribution showing no strict improvement is possible with the Sawin linear-combination idea. "Another core method will be needed for the full resolution" (Cambie 2025).
+
+## Structural reduction established in this project
+
+This project proves (self-contained, `mathematics/proofs.md`):
+
+* **Result 1:** singleton member-set $\Rightarrow$ popular element ($d(x)\ge m/2$).
+* **Result 3:** 2-element member-set $\Rightarrow$ popular element ($\max\{d(a),d(b)\}\ge m/2$).
+* **Result 4:** general degree bound $M\ge m/(k+1)$ where $k$ is the smallest non-empty member-set size.
+
+**Consequence:** Frankl's conjecture reduces to the case $k\ge3$ (all non-empty member-sets have size at least 3). For $k\ge3$, Result 4 gives only $M\ge m/(k+1)\le m/4<m/2$, which is the precise open gap. The entropy-based literature is provably exhausted at $c\approx0.3823455$, so a new method is needed for $k\ge3$.
 
 ## Main techniques in the literature
 

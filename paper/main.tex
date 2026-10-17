@@ -99,14 +99,17 @@ complete proof:
   (density $\ge \Nhalf$).
 \item Lemma~\ref{lem:injection}: for every $S\in\cF$,
   $|\{A:S\subseteq A\}|\ge|\{A:A\cap S=\emp\}|$, via an explicit injection.
+\item Theorem~\ref{thm:twoelement}: if $\{a,b\}\in\cF$ is a 2-element
+  member-set, then $\max\{d(a),d(b)\}\ge m/2$ --- Frankl's conjecture holds
+  for every union-closed family with a 2-element member-set.
 \item Corollary~\ref{cor:degree}: $M\ge m/(k+1)$ where $M=\max_x d(x)$ and
   $k$ is the size of a smallest non-empty member-set.
 \end{enumerate}
 
 Together these show that any counterexample must have no singletons,
-$k\ge2$, $\bar s<n/2$, and $M<m/2$. The jump from $M\ge m/(k+1)$ (below
-$m/2$ whenever $k\ge2$) to the conjectured $M\ge m/2$ is precisely the open
-gap.
+$k\ge3$ (since the singleton and 2-element cases are settled), $\bar s<n/2$,
+and $M<m/2$. The jump from $M\ge m/(k+1)$ (which is $\le m/4$ whenever
+$k\ge3$) to the conjectured $M\ge m/2$ is precisely the open gap.
 
 We also report exact finite verification (computation as assistant, not proof)
 for all union-closed families on $n\le 5$ ground elements; the tight family
@@ -167,6 +170,29 @@ $B_1\cap S=B_2\cap S=\emp$, intersecting with $[n]\setminus S$ gives
 $B_1=B_2$. Hence $g(S)\ge h(S)$.
 \end{proof}
 
+\begin{theorem}[The 2-element case]
+\label{thm:twoelement}
+If $\{a,b\}\in\cF$ is a member-set of size exactly 2, then
+$$\max\{d(a),d(b)\}\ge \frac m2.$$
+Equivalently, Frankl's conjecture holds for every union-closed family
+containing a 2-element member-set.
+\end{theorem}
+
+\begin{proof}
+Partition $\cF$ according to which elements of $S=\{a,b\}$ each set contains:
+$$\begin{aligned}
+\cF_{ab}&=\{A\in\cF:a,b\in A\}=\{A:S\subseteq A\}, &&|\cF_{ab}|=g(S),\\
+\cF_a&=\{A\in\cF:a\in A,\ b\notin A\}, &&|\cF_a|=d(a)-g(S),\\
+\cF_b&=\{A\in\cF:b\in A,\ a\notin A\}, &&|\cF_b|=d(b)-g(S),\\
+\cF_0&=\{A\in\cF:a\notin A,\ b\notin A\}, &&|\cF_0|=h(S).
+\end{aligned}$$
+These four subfamilies partition $\cF$, so
+$$m=g(S)+(d(a)-g(S))+(d(b)-g(S))+h(S)=d(a)+d(b)-g(S)+h(S).$$
+By Lemma~\ref{lem:injection}, $g(S)\ge h(S)$, so $-g(S)+h(S)\le0$, giving
+$$m\le d(a)+d(b)\le M+M=2M,$$
+hence $M\ge m/2$. Therefore at least one of $a,b$ is popular.
+\end{proof}
+
 \begin{corollary}[Degree bound via smallest member-set]
 \label{cor:degree}
 Let $k=\min\{|S|:\emp\ne S\in\cF\}$ and $M=\max_x d(x)$. Then
@@ -188,10 +214,11 @@ $(k+1)M\ge m$, i.e. $M\ge m/(k+1)$.
 Any counterexample to Conjecture~\ref{conj:frankl} must satisfy:
 \begin{enumerate}
 \item no singleton member-sets ($k\ge2$, by Lemma~\ref{lem:singleton});
+\item no 2-element member-sets (by Theorem~\ref{thm:twoelement}); hence $k\ge3$;
 \item $\bar s<n/2$ (otherwise the average argument gives $M\ge m/2$);
 \item $M<m/2$ (by definition of counterexample).
 \end{enumerate}
-If the counterexample has a 2-element member-set then $M\ge m/3$.
+For $k\ge3$, Corollary~\ref{cor:degree} gives $M\ge m/(k+1)\le m/4<m/2$.
 \end{corollary}
 
 \section{Finite computation}

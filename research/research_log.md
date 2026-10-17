@@ -19,6 +19,19 @@
 - Derived Lemma 2 (injection bound g(S) >= h(S) for S in F) and Corollary M >= m/(k+1).
 - Wrote mathematics/proofs.md and mathematics/main_results.md.
 
+## 2026-10-17 — Structural advancement (pushed to higher category)
+
+- Proved Result 3: if a union-closed family contains a 2-element member-set {a,b},
+  then max(d(a), d(b)) >= m/2, i.e. Frankl's conjecture holds for such families.
+  Proof: partition F by which elements of {a,b} each set contains;
+  m = d(a) + d(b) - g(S) + h(S); by Lemma 2, g(S) >= h(S), so
+  m <= d(a) + d(b) <= 2M, hence M >= m/2.
+- This is a clean structural reduction: Frankl's conjecture reduces to the case
+  k >= 3 (all non-empty member-sets have size >= 3). For k >= 3,
+  M >= m/(k+1) <= m/4 < m/2, which is the precise open gap.
+- Wrote up Result 3 in mathematics/proofs.md and mathematics/main_results.md.
+- Updated literature_review.md with the structural reduction.
+
 ## 2026-10-17 — Computational exploration
 - src/enumerate.py: exact enumeration of union-closed families via antichain
   (minimal-set) correspondence; verified Frankl for all non-trivial families

@@ -61,6 +61,30 @@ intersecting with $[n]\setminus S$ recovers $B_1=B_2$. $\square$
 
 ---
 
+## Theorem — The 2-element case (Frankl's conjecture for families with a
+2-element member-set)
+
+> If $\mathcal F$ is union-closed and contains a member-set $S=\{a,b\}$ of
+> size exactly $2$, then $\max\{d(a),d(b)\}\ge m/2$; in particular, Frankl's
+> conjecture holds for $\mathcal F$.
+
+**Proof.** Partition $\mathcal F$ according to which elements of $S$ a set
+contains:
+$$\begin{aligned}
+\mathcal F_{ab}&=\{A\in\mathcal F:a,b\in A\}
+   =\{A:S\subseteq A\}, &&|\mathcal F_{ab}|=g(S),\\
+\mathcal F_a&=\{A\in\mathcal F:a\in A,\ b\notin A\}, &&|\mathcal F_a|=d(a)-g(S),\\
+\mathcal F_b&=\{A\in\mathcal F:b\in A,\ a\notin A\}, &&|\mathcal F_b|=d(b)-g(S),\\
+\mathcal F_0&=\{A\in\mathcal F:a\notin A,\ b\notin A\}, &&|\mathcal F_0|=h(S).
+\end{aligned}$$
+These four subfamilies are disjoint and their union is $\mathcal F$, so
+$$m=|\mathcal F|=g(S)+(d(a)-g(S))+(d(b)-g(S))+h(S)
+  =d(a)+d(b)-g(S)+h(S).$$
+By Lemma 2, $g(S)\ge h(S)$. Hence $-g(S)+h(S)\le0$, giving
+$$m\le d(a)+d(b)\le M+M=2M,$$
+so $M\ge m/2$. Since $M=\max\{d(a),d(b),\ldots\}\ge\max\{d(a),d(b)\}$, at
+least one of $a,b$ is popular. $\square$
+
 ## Corollary — Degree bound via the smallest member-set
 
 > Let $k=\min\{|S|:\varnothing\ne S\in\mathcal F\}$ and $M=\max_x d(x)$.
@@ -71,23 +95,29 @@ member-set).
 * Upper bound on $g(S)$: every set containing $S$ contains some $x\in S$, so
   $\{A:S\subseteq A\}\subseteq\bigcup_{x\in S}\{A:x\in A\}$, hence
   $g(S)\le\sum_{x\in S}d(x)\le kM$ (and also $g(S)\le d(x)$ for each
-  $x\in S$, so $g(S)\le M$; we use the sharper $g(S)\le kM$ below).
+  $x\in S$, so $g(S)\le M$).
 * Lower bound on $h(S)$: the sets meeting $S$ are
   $\bigcup_{x\in S}\{A:x\in A\}$, whose size is at most
   $\sum_{x\in S}d(x)\le kM$. Therefore
   $$h(S)=m-\bigl|\{A:A\cap S\ne\varnothing\}\bigr|
        \ge m-kM.$$
-* By Lemma 2, $g(S)\ge h(S)$. Using $g(S)\le kM$ is the wrong direction;
-  instead use $g(S)\le \min_{x\in S}d(x)\le M$:
+* By Lemma 2, $g(S)\ge h(S)$. Since $g(S)\le M$:
   $$M\ge g(S)\ge h(S)\ge m-kM,$$
   so $(k+1)M\ge m$, i.e. $M\ge m/(k+1)$. $\square$
 
 **Consequences.**
 * A counterexample has $k\ge2$ (no singletons by Lemma 1).
-* If a counterexample has a 2-element member-set ($k=2$), then $M\ge m/3$.
+* If a counterexample has a 2-element member-set ($k=2$), the theorem above
+  gives $M\ge m/2$ — contradiction. So a counterexample must have $k\ge3$.
+* For $k\ge3$, the corollary gives $M\ge m/(k+1)\le m/4<m/2$.
 * Average-set-size argument: $\sum_x d(x)=\sum_{A\in\mathcal F}|A|=m\bar s$,
   so $\max_x d(x)\ge m\bar s/n$. Hence if $\bar s\ge n/2$ then $M\ge m/2$.
   Thus a counterexample must also satisfy $\bar s<n/2$.
+
+**Reduction.** Frankl's conjecture reduces to the case $k\ge3$: every union-closed
+family with a singleton or a 2-element member-set satisfies the conjecture.
+The remaining difficulty is precisely the case where all non-empty member-sets
+have size at least $3$.
 
 ---
 

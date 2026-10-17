@@ -74,18 +74,34 @@ rigorous *partial / structural* results:
 2. **Injection bound (PROVED HERE):** for every $S\in\mathcal F$,
    $|\{A:S\subseteq A\}|\ge|\{A:A\cap S=\varnothing\}|$, via an explicit
    injection $B\mapsto B\cup S$.
-3. **Degree bound (PROVED HERE):** $M=\max_x d(x)\ge m/(k+1)$, where $k$ is
+3. **2-element case (PROVED HERE):** if $\mathcal F$ contains a 2-element
+   member-set $\{a,b\}$, then $\max\{d(a),d(b)\}\ge m/2$ — Frankl's
+   conjecture holds for every union-closed family with a 2-element member-set.
+4. **Degree bound (PROVED HERE):** $M=\max_x d(x)\ge m/(k+1)$, where $k$ is
    the size of a smallest non-empty member-set.
-4. **Finite verification (COMPUTATIONALLY VERIFIED):** exact enumeration of
+5. **Finite verification (COMPUTATIONALLY VERIFIED):** exact enumeration of
    all union-closed families on $n=4$ (166 families) and $n=5$ (7,579
    families) using exact integer arithmetic; no counterexample. Tight family
    is $\{\varnothing,[n]\}$ (every element density exactly $1/2$), showing
    $1/2$ is best possible.
 
-These show any counterexample must have no singletons ($k\ge2$),
-average member-set size $\bar s<n/2$, and $M<m/2$.
+**Structural reduction.** Results 1 and 3 show that any counterexample must
+have $k\ge3$ (no singletons, no 2-element member-sets): every non-empty
+member-set has size at least 3. Frankl's conjecture thereby reduces to this
+remaining case. For $k\ge3$, Result 4 gives $M\ge m/(k+1)\le m/4<m/2$ —
+this is the precise open gap.
+
+These show any counterexample must have $k\ge3$, average member-set size
+$\bar s<n/2$, and $M<m/2$.
 
 ## 5. Main Theorem
+
+**Theorem (2-element case, PROVED HERE).** Let $\mathcal F$ be a finite
+union-closed family with $m=|\mathcal F|$ member-sets. If $\mathcal F$
+contains a member-set $\{a,b\}$ of size exactly 2, then
+$$\max\{d(a),d(b)\}\ge \frac m2.$$
+Equivalently, Frankl's conjecture holds for every union-closed family with a
+2-element member-set.
 
 **Theorem (degree bound, PROVED HERE).** Let $\mathcal F$ be a finite
 union-closed family with $m=|\mathcal F|$ member-sets on ground set $[n]$, and
@@ -96,9 +112,10 @@ $$M\ge\frac{m}{k+1}.$$
 **Theorem (singleton case, PROVED HERE).** If $\{x\}\in\mathcal F$ then
 $d(x)\ge m/2$.
 
-**Corollary.** Any counterexample to Frankl's conjecture must satisfy
-$k\ge2$, $\bar s<n/2$, and $M<m/2$; if it has a 2-element member-set then
-$M\ge m/3$.
+**Corollary (reduction).** Any counterexample to Frankl's conjecture must
+satisfy $k\ge3$ (no singletons by the singleton-case theorem; no 2-element
+member-sets by the 2-element-case theorem), $\bar s<n/2$, and $M<m/2$. For
+$k\ge3$, the degree bound gives $M\ge m/(k+1)\le m/4<m/2$.
 
 All assumptions and quantifiers are stated explicitly; see
 `mathematics/proofs.md` for complete proofs.
@@ -113,6 +130,9 @@ Complete proofs are in `mathematics/proofs.md`:
 * **Lemma 2** (injection bound): explicit injection
   $\phi:\{B:B\cap S=\varnothing\}\to\{A:S\subseteq A\}$, $\phi(B)=B\cup S$;
   hence $g(S)\ge h(S)$.
+* **Theorem** (2-element case): partition $\mathcal F$ by which elements of
+  $\{a,b\}$ each set contains; $m=d(a)+d(b)-g(S)+h(S)$; by Lemma 2,
+  $g(S)\ge h(S)$, so $m\le d(a)+d(b)\le 2M$, hence $M\ge m/2$.
 * **Corollary** (degree bound): $g(S)\le M$, $h(S)\ge m-kM$, combine with
   Lemma 2 to get $(k+1)M\ge m$.
 
@@ -199,7 +219,7 @@ that framework. No such method was found in this investigation.
 * Repository URL: https://github.com/rajveersinh-is-dev/union-closed-sets-conjecture
 * Default branch: `main`
 * Status: **public**, successfully pushed.
-* Relevant commit: `831e5ec` (matches `origin/main`; verified via
+* Relevant commit: `HEAD` (matches `origin/main`; verified via
   `git ls-remote`).
 * Authenticated account used for creation/push: `rajveersinh-is-dev` (this is
   the account that `gh`/`git` resolves to for API and git operations via the
@@ -218,11 +238,19 @@ project.
 **Category C — RIGOROUS PARTIAL RESULT.**
 
 The original problem (Frankl's conjecture) remains open, but rigorous partial
-results were established: the singleton-case theorem, the injection bound, and
-the degree bound $M\ge m/(k+1)$, each with a complete proof, plus verified
-finite computation. Individual elementary lemmas are likely present in the
-prior literature in some form, so the novelty is modest and the full
-conjecture is unresolved; this is reported as Category C (not Category A or B)
-with full transparency.
+results were established: the singleton-case theorem, the injection bound, the
+2-element-case theorem (Frankl's conjecture holds for families with a
+2-element member-set), and the degree bound $M\ge m/(k+1)$, each with a
+complete proof, plus verified finite computation.
+
+**Structural reduction.** Results 1 and 3 reduce Frankl's conjecture to the
+case $k\ge3$ (all non-empty member-sets have size at least 3). For $k\ge3$,
+the degree bound gives only $M\ge m/(k+1)\le m/4<m/2$ — this is the precise
+open gap. The entropy-based literature is provably exhausted at
+$c\approx0.3823455$ (Cambie 2025), so a new method is required.
+
+Individual elementary lemmas are likely present in the prior literature in
+some form, so the novelty is modest and the full conjecture is unresolved;
+this is reported as Category C (not Category A or B) with full transparency.
 
 **What has been proved is what the proof establishes — not what the project hoped to establish.**

@@ -31,23 +31,39 @@ $B\mapsto B\cup S$).
 
 ---
 
-## Result 3 — Degree bound in terms of the smallest member-set (PROVED HERE)
+## Result 3 — The 2-element case (PROVED HERE)
+
+If $\mathcal F$ is union-closed and contains a member-set $\{a,b\}$ of size
+exactly 2, then $\max\{d(a),d(b)\}\ge m/2$ where $m=|\mathcal F|$. Equivalently,
+Frankl's conjecture holds for every union-closed family with a 2-element
+member-set.
+
+Proof: `mathematics/proofs.md`, Theorem (2-element case). The proof partitions
+$\mathcal F$ by which elements of $\{a,b\}$ each set contains and applies
+Lemma 2.
+
+---
+
+## Result 4 — Degree bound in terms of the smallest member-set (PROVED HERE)
 
 Let $k=\min\{|S|:\varnothing\ne S\in\mathcal F\}$ and $M=\max_x d(x)$. Then
 $$M\;\ge\;\frac{m}{k+1},\qquad m:=|\mathcal F|.$$
 
-Proof: `mathematics/proofs.md`, Corollary to Lemma 2.
+Proof: `mathematics/proofs.md`, Corollary.
 
 ---
 
 ## Consequences (PROVED HERE)
 
-1. In any counterexample to Frankl's conjecture, $\mathcal F$ contains no
-   singleton (otherwise Result 1 gives a popular element), so $k\ge2$.
-2. Hence any counterexample with a 2-element member-set has $M\ge m/3$.
-3. By the average-set-size argument: if the average member-set size
-   $\bar s\ge n/2$ then some element is popular. So a counterexample must
-   satisfy $\bar s<n/2$ **and** $M<m/2$.
+1. **Reduction to $k\ge3$.** Any counterexample to Frankl's conjecture must
+   have no singletons (Result 1) and no 2-element member-sets (Result 3), so
+   $k\ge3$: every non-empty member-set has size at least $3$. The conjecture is
+   thereby reduced to this case.
+2. For $k\ge3$, Result 4 gives $M\ge m/(k+1)\le m/4<m/2$ — well short of the
+   conjectured $m/2$. This is the precise open gap.
+3. Average-set-size argument: if the average member-set size $\bar s\ge n/2$
+   then some element is popular. So a counterexample must satisfy
+   $\bar s<n/2$ **and** $M<m/2$ **and** $k\ge3$.
 
 ---
 
@@ -56,7 +72,7 @@ Proof: `mathematics/proofs.md`, Corollary to Lemma 2.
 * The full conjecture ($M\ge m/2$ for all union-closed $\mathcal F\ne\{\varnothing\}$).
 * Closing the gap between the best general bound $c\approx 0.3823455$ and $1/2$.
 * The conjecture for families whose smallest non-empty member-set has size
-  $k\ge3$ (Result 3 only gives $M\ge m/(k+1)<m/2$ there).
+  $k\ge3$ (Result 4 only gives $M\ge m/(k+1)\le m/4$ there).
 
 ---
 

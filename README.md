@@ -36,9 +36,12 @@ This is one of the best-known open problems in extremal set theory. Its statemen
 
 1. **Singleton case:** if $\{x\}\in\cF$ then $x$ is popular ($d(x)\ge m/2$).
 2. **Injection bound:** for every $S\in\cF$, $|\{A:S\subseteq A\}|\ge|\{A:A\cap S=\varnothing\}|$.
-3. **Degree bound:** $M=\max_x d(x)\ge m/(k+1)$ where $k$ is the smallest non-empty member-set size.
+3. **2-element case:** if $\cF$ contains $\{a,b\}$ of size 2, then $\max\{d(a),d(b)\}\ge m/2$ — Frankl's conjecture holds for such families.
+4. **Degree bound:** $M=\max_x d(x)\ge m/(k+1)$ where $k$ is the smallest non-empty member-set size.
 
-**No theorem resolving Frankl's conjecture is claimed.** The full conjecture ($M\ge m/2$ for all union-closed families) remains open; the gap from $m/(k+1)$ (which is $<m/2$ whenever $k\ge2$) to $m/2$ is precisely the open difficulty. The entropy-based literature is provably sharp at $c\approx 0.3823455$ (Cambie 2025), so a new method is needed.
+**Structural reduction:** Results 1 and 3 show that any counterexample must have $k\ge3$ (all non-empty member-sets have size at least 3). For $k\ge3$, Result 4 gives $M\ge m/(k+1)\le m/4<m/2$ — this is the precise open gap.
+
+**No theorem resolving Frankl's conjecture is claimed.** The full conjecture ($M\ge m/2$ for all union-closed families) remains open; the gap from $m/(k+1)$ (which is $\le m/4$ whenever $k\ge3$) to $m/2$ is precisely the open difficulty. The entropy-based literature is provably sharp at $c\approx 0.3823455$ (Cambie 2025), so a new method is needed.
 
 Any result labelled `PROVED HERE` is accompanied by a complete proof in `mathematics/proofs.md`. Conjectures and computations are never presented as theorems.
 
