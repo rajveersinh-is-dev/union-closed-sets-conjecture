@@ -19,21 +19,53 @@ Restrictions tested:
 
 from __future__ import annotations
 
-import sys
 from time import time
+import sys
 
 from enumerate import antichains, union_closure, frequencies
 
 
+
+
 def set_size(a: int) -> int:
+    """Set size.
+    
+    Args:
+        a:
+    
+    Returns:
+        The computed result
+    
+    """
     return a.bit_count()
 
 
 def full_mask(n: int) -> int:
+    """Full mask.
+    
+    Args:
+        n:
+    
+    Returns:
+        The computed result
+    
+    """
     return (1 << n) - 1
 
 
-def restriction_ok(family, antichain, n, kind):
+def restriction_ok(family, antichain, n, kind) -> bool:
+    """Restriction ok.
+    
+    Args:
+        family:
+        antichain:
+        n:
+        kind:
+    
+    Returns:
+        bool: Result of type bool
+    
+    """
     full = full_mask(n)
     if kind == "no_empty":
         return 0 not in family
@@ -52,6 +84,9 @@ def restriction_ok(family, antichain, n, kind):
 
 
 def main() -> None:
+    """Entry point — parse arguments and run the main computation.
+    
+    """
     n = int(sys.argv[1]) if len(sys.argv) > 1 else 5
     kinds = ["all", "no_empty", "no_singletons", "min_size_2",
              "full_in_F", "no_isolated", "min_sets_size2"]

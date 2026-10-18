@@ -16,7 +16,17 @@ import itertools
 import sys
 
 
+
 def is_prime(n: int) -> bool:
+    """Is prime.
+    
+    Args:
+        n:
+    
+    Returns:
+        bool: Result of type bool
+    
+    """
     if n < 2:
         return False
     if n % 2 == 0:
@@ -30,6 +40,15 @@ def is_prime(n: int) -> bool:
 
 
 def primes_upto(limit: int) -> list[int]:
+    """Primes upto.
+    
+    Args:
+        limit:
+    
+    Returns:
+        The computed result
+    
+    """
     return [n for n in range(2, limit + 1) if is_prime(n)]
 
 
@@ -69,6 +88,9 @@ def extremal_sets(p: int, k: int, limit: int = 10) -> list[tuple[int, ...]]:
 
 
 def main() -> None:
+    """Entry point — parse arguments and run the main computation.
+    
+    """
     args = sys.argv[1:]
     limit = int(args[0]) if args else 13
     print("p   g(p)   example extremal set (size g(p))")
